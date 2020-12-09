@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.ExpertBookingManagementActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:visibility="gone"
+        android:background="@drawable/rectangle_rounded_green_xml">
+    <Spinner
+        android:id="@+id/sp_booking_status"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_38sdp"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        android:entries="@array/array_booking_status"
+        android:background="@null"
+        android:padding="8dp" />
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerVertical="true"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="@dimen/_10sdp"
+          android:background="@drawable/down_arrow"></ImageView>
+    </RelativeLayout>
+    <Spinner
+        android:id="@+id/sp_booking_dates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:entries="@array/array_booking_dates" />
+    <TextView
+        android:id="@+id/tv_selectdate_for_expert"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_38sdp"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/selectdate"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_8sdp"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="#000"
+        android:drawableRight="@drawable/down_arrow"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/rectangle_rounded_green_xml"></TextView>
+
+
+    <Button
+        android:id="@+id/btn_bookslot_search"
+        android:layout_width="@dimen/_85sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/searchbook"
+        android:background="@drawable/rectangle_blue_rounded_corner"
+        android:layout_gravity="center_horizontal"></Button>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mTvbookingdetails"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="#000"
+            android:text="Bookings details for 07/09/2020 are listed for review and action. Change to any other date from selector to view corresponding bookings."
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.textview.MaterialTextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_bookings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:padding="8dp"
+            android:layout_below="@+id/mTvbookingdetails"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_card_expert_booking" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mTvexpertnobooking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/colorPrimary"
+            android:text="No Booking Found">
+
+        </com.google.android.material.textview.MaterialTextView>
+    </RelativeLayout>
+
+
+</LinearLayout>

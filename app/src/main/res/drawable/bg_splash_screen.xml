@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- The android:opacity=”opaque” line — this is critical in preventing a flash of black as your theme transitions. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+
+    <!-- The background color, preferably the same as your normal theme -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="135"
+                android:endColor="#00AAFF"
+                android:startColor="#01DF3A"
+                android:type="linear"/>
+        </shape>
+    </item>
+
+    <!-- Your product logo - 144dp color version of your app icon -->
+<!--    <item-->
+<!--        android:drawable="@drawable/ic_wifi_tethering_black_144dp"-->
+<!--        android:gravity="center" />-->
+
+</layer-list>

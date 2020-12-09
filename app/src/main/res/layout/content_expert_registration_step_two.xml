@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.ExpertRegistrationStepTwoActivity"
+    tools:showIn="@layout/activity_expert_registration_step_two">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bank Info"
+            android:textAllCaps="true"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_bank_account_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_bank_account_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bank Account Number"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_bank_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_bank_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bank Name"
+                android:inputType="textCapWords" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_ifsc_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_ifsc_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="IFSC Code"
+                android:inputType="textCapCharacters" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Consulting Topic"
+            android:textAllCaps="true"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll_consulting_topics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/ll_consulting_topics_test"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical">-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:orientation="vertical">-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="Speciality One"-->
+        <!--                    android:textStyle="bold"-->
+        <!--                    tools:visibility="visible" />-->
+
+        <!--                <com.google.android.material.checkbox.MaterialCheckBox-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="Speciality One Topic One"-->
+        <!--                    tools:visibility="visible" />-->
+        <!--            </LinearLayout>-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:orientation="vertical">-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="Speciality Two"-->
+        <!--                    android:textStyle="bold"-->
+        <!--                    tools:visibility="visible" />-->
+
+        <!--                <com.google.android.material.checkbox.MaterialCheckBox-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="Speciality Two Topic One"-->
+        <!--                    tools:visibility="visible" />-->
+
+        <!--                <com.google.android.material.checkbox.MaterialCheckBox-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="Speciality Two Topic Two"-->
+        <!--                    tools:visibility="visible" />-->
+        <!--            </LinearLayout>-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:orientation="vertical">-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="Speciality Three"-->
+        <!--                    android:textStyle="bold"-->
+        <!--                    tools:visibility="visible" />-->
+
+        <!--                <com.google.android.material.checkbox.MaterialCheckBox-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="Speciality Three Topic One"-->
+        <!--                    tools:visibility="visible" />-->
+
+        <!--                <com.google.android.material.checkbox.MaterialCheckBox-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="Speciality Three Topic Two"-->
+        <!--                    tools:visibility="visible" />-->
+
+        <!--                <com.google.android.material.checkbox.MaterialCheckBox-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="Speciality Three Topic Three"-->
+        <!--                    tools:visibility="visible" />-->
+        <!--            </LinearLayout>-->
+
+        <!--        </LinearLayout>-->
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Consulting Slot"
+            android:textAllCaps="true"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select at least one option below"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cb_weekdays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weekdays" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_weekdays_slots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <androidx.gridlayout.widget.GridLayout
+                    android:id="@+id/gl_weekdays_slot_one"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:columnCount="2"
+                    app:layout_constraintEnd_toStartOf="@+id/ib_weekdays_slot_toggle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="From"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="To"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill_horizontal" />
+
+                    <Spinner
+                        android:id="@+id/sp_weekday_slot_one_from"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill"
+                        tools:entries="@array/array_consulting_slot_from" />
+
+                    <Spinner
+                        android:id="@+id/sp_weekday_slot_one_to"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
+                        app:layout_gravity="fill_horizontal"
+                        tools:entries="@array/array_consulting_slot_to" />
+
+                </androidx.gridlayout.widget.GridLayout>
+
+                <androidx.gridlayout.widget.GridLayout
+                    android:id="@+id/gl_weekdays_slot_two"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:columnCount="2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ib_weekdays_slot_toggle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/gl_weekdays_slot_one"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="From"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="To"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <Spinner
+                        android:id="@+id/sp_weekday_slot_two_from"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/array_consulting_slot_from"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <Spinner
+                        android:id="@+id/sp_weekday_slot_two_to"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/array_consulting_slot_to"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                </androidx.gridlayout.widget.GridLayout>
+
+
+                <ImageButton
+                    android:id="@+id/ib_weekdays_slot_toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:src="@drawable/ic_add_black_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:src="@drawable/ic_remove_black_24dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cb_saturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Saturday" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_saturday_slots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <androidx.gridlayout.widget.GridLayout
+                    android:id="@+id/gl_saturday_slot_one"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:columnCount="2"
+                    app:layout_constraintEnd_toStartOf="@+id/ib_saturday_slot_toggle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="From"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="To"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill_horizontal" />
+
+                    <Spinner
+                        android:id="@+id/sp_saturday_slot_one_from"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/array_consulting_slot_from"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <Spinner
+                        android:id="@+id/sp_saturday_slot_one_to"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/array_consulting_slot_to"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
+                        app:layout_gravity="fill_horizontal" />
+
+                </androidx.gridlayout.widget.GridLayout>
+
+                <androidx.gridlayout.widget.GridLayout
+                    android:id="@+id/gl_saturday_slot_two"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:columnCount="2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ib_saturday_slot_toggle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/gl_saturday_slot_one"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="From"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="To"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <Spinner
+                        android:id="@+id/sp_saturday_slot_two_from"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/array_consulting_slot_from"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <Spinner
+                        android:id="@+id/sp_saturday_slot_two_to"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/array_consulting_slot_to"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                </androidx.gridlayout.widget.GridLayout>
+
+                <ImageButton
+                    android:id="@+id/ib_saturday_slot_toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:src="@drawable/ic_add_black_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:src="@drawable/ic_remove_black_24dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cb_sunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sunday" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_sunday_slots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <androidx.gridlayout.widget.GridLayout
+                    android:id="@+id/gl_sunday_slot_one"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:columnCount="2"
+                    app:layout_constraintEnd_toStartOf="@+id/ib_sunday_slot_toggle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="From"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="To"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill_horizontal" />
+
+                    <Spinner
+                        android:id="@+id/sp_sunday_slot_one_from"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/array_consulting_slot_from"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <Spinner
+                        android:id="@+id/sp_sunday_slot_one_to"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/array_consulting_slot_to"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
+                        app:layout_gravity="fill_horizontal" />
+
+                </androidx.gridlayout.widget.GridLayout>
+
+                <androidx.gridlayout.widget.GridLayout
+                    android:id="@+id/gl_sunday_slot_two"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:columnCount="2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ib_sunday_slot_toggle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/gl_sunday_slot_one"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="From"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="To"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <Spinner
+                        android:id="@+id/sp_sunday_slot_two_from"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/array_consulting_slot_from"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <Spinner
+                        android:id="@+id/sp_sunday_slot_two_to"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/array_consulting_slot_to"
+                        android:spinnerMode="dialog"
+                        android:textAlignment="center"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                </androidx.gridlayout.widget.GridLayout>
+
+                <ImageButton
+                    android:id="@+id/ib_sunday_slot_toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:src="@drawable/ic_add_black_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:src="@drawable/ic_remove_black_24dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Natural Health Management"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Therapeutic Yoga"
+            android:visibility="gone" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Naturapathy"
+            android:visibility="gone" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Other"
+            android:visibility="gone" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Type Topic" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Counselling and Motivation"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Relationship"
+            android:visibility="gone" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Career"
+            android:visibility="gone" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Other"
+            android:visibility="gone" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Type Topic" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Consulting Slot Duration"
+            android:textAllCaps="true"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select at least one option below"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/mcb_12_mins"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="12 min" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/mcb_25_mins"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="25 min" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/mcb_50_mins"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="50 min" />
+
+        </LinearLayout>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_expert_terms_and_conditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/expert_registration_terms_and_conditions" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_submit_registration_request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Submit Registration Request" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

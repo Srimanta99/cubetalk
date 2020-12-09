@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#001C94</color>
+    <color name="colorPrimaryDark">#000065</color>
+    <color name="colorAccent">#001C94</color>
+
+    <color name="colorSecondary">#008C43</color>
+
+    <color name="colorWindowBackground">#C2AE73</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#FFFFFF</color>
+    <color name="dot_dark_screen2">#FFFFFF</color>
+    <color name="dot_dark_screen3">#FFFFFF</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#001C94</color>
+    <color name="dot_light_screen2">#001C94</color>
+    <color name="dot_light_screen3">#001C94</color>
+
+    <color name="ic_launcher_background">#FCDE5B</color>
+    <color name="cardview_default">#D7C794</color>
+    <color name="white">#FFFFFF</color>
+</resources>

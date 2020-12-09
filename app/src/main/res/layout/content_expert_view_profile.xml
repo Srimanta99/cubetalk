@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.ExpertViewProfileActivity"
+    tools:showIn="@layout/activity_expert_view_profile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".activities.ExpertViewProfileActivity">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="General Info"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_name"
+                style="@style/EditTextNotEditable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                tools:text="Nitin Ghosh" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_address"
+                style="@style/EditTextNotEditable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                tools:text="Kolkata, West Bengal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_key_accomplishment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_key_accomplishment"
+                style="@style/EditTextNotEditable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Summary of Competency"
+                tools:text="Professional Motivator" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_languages_for_consultation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_languages_for_consultation"
+                style="@style/EditTextNotEditable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Languages for Consultation"
+                tools:text="English, Hindi" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_years_of_experience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_years_of_experience"
+                style="@style/EditTextNotEditable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Years of Experience"
+                tools:text="12" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Consultation Category"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll_consulting_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Documents"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload CV" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_expert_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CV_Nitin.docx" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="KYC Doc Upload" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_expert_kyc_document_one_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NA" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_expert_kyc_document_two_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NA" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Bank Info"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_bank_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="United Bank of India" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_bank_account_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Account No.: 2236544553" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_bank_ifsc_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="IFSC: UTB3265427" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Consultation Slot"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_consulting_slot_weekdays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weekdays: 9pm to 10pm"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_consulting_slot_saturday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saturday: 9pm to 10pm"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_consulting_slot_sunday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sunday: 9pm to 10pm"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Consultation Topics"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll_consulting_topics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Service Start Date"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_service_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="12th June 2020" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Consultation Slot Duration"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_consulting_slot_duration_12_minutes_and_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12 Minutes"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_consulting_slot_duration_25_minutes_and_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="25 Minutes"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_consulting_slot_duration_50_minutes_and_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50 Minutes"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

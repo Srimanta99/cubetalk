@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "330678286265",
+    "firebase_url": "https://cubetalk.firebaseio.com",
+    "project_id": "cubetalk",
+    "storage_bucket": "cubetalk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330678286265:android:38e3d378c9a1c4c8f0e868",
+        "android_client_info": {
+          "package_name": "local.impactlife.cubetalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330678286265-d5coeb0mg0mbqo541hj3p7gognjbtgi0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkGGKFqRIaoW6Ee2mZHtmWVGSQMmaplaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330678286265-d5coeb0mg0mbqo541hj3p7gognjbtgi0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

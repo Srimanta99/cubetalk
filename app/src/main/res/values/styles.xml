@@ -1,0 +1,96 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorWindowBackground</item>
+        <item name="colorSurface">@color/colorWindowBackground</item>
+        <item name="textInputStyle">
+            @style/Widget.MaterialComponents.TextInputLayout.OutlinedBox
+        </item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.NoActionBar.TranslucentStatusBar" parent="AppTheme.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--        <item name="android:navigationBarColor">@android:color/transparent</item>-->
+        <!--        <item name="android:windowTranslucentNavigation">true</item>-->
+        <!--        <item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+    </style>
+
+    <style name="SplashTheme" parent="AppTheme.NoActionBar.TranslucentStatusBar">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:windowBackground">@drawable/bg_splash_screen</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+    </style>
+
+    <style name="MaterialSecondaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorSecondary</item>
+    </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.Design.TextInputLayout">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="Custom" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/custom_text_btn_text_color_selector</item>
+        <item name="android:backgroundTint">@color/custom_btn_text_btn_bg_color_selector</item>
+    </style>
+
+    <style name="CustomCheckBox" parent="@style/Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="android:button">@null</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:background">@drawable/custom_checkbox_background</item>s
+    </style>
+
+    <style name="TimeSlotRadioButton" parent="@style/Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:button">@null</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@drawable/background_time_slot</item>
+        <item name="android:textColor">@color/color_time_slot</item>
+    </style>
+
+    <style name="SpecialityTopicRadioButton" parent="@style/Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="background">@drawable/custom_checkbox_background</item>
+        <item name="android:button">@null</item>
+    </style>
+
+    <style name="SpecialityTopicRadioGroup">
+        <item name="radioButtonStyle">@style/SpecialityTopicRadioButton</item>
+    </style>
+
+    <style name="EditTextNotEditable" parent="Widget.AppCompat.EditText">
+        <item name="android:clickable">false</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:inputType">none</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="circleImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="datepickerdiakog"  parent="android:Theme.Material.Light">
+        <item name="colorAccent">@color/colorSecondary</item>></style>
+
+</resources>

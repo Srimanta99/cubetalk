@@ -1,0 +1,98 @@
+<resources>
+    <string name="app_name">CubeTalk</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_intro_screen">IntroScreenActivity</string>
+    <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="title_activity_login">Login Activity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_edit_profile">EditProfileActivity</string>
+    <string name="splash_about_text">One-Stop 1-on-1 Video Calling Platform \n <i>for</i> <b>C</b>onsulting, <b>C</b>oaching, and <b>C</b>ounselling <i>needs</i></string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title_user">Adam Smith</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="title_activity_registration_test">RegistrationTestActivity</string>
+    <string name="title_activity_forgot_password">Forgot Password</string>
+    <string name="title_activity_expert_registration_step_one">Expert Registration Step 1</string>
+    <string name="title_activity_expert_registration_step_two">Expert Registration - Step 2</string>
+    <string name="expert_registration_terms_and_conditions">Expert sign-up is subjected to accepting additional terms and conditions</string>
+    <string name="title_activity_expert_intro_screen">ExpertIntroScreenActivity</string>
+    <string name="menu_sign_up_as_expert">Sign up as Expert</string>
+    <string name="menu_credit_shell">Credit Shell</string>
+    <string name="menu_upcoming_booking">Upcoming Bookings</string>
+    <string name="menu_past_booking">Past Bookings</string>
+    <string name="menu_contact_admin">Contact Admin</string>
+    <string name="menu_change_password">Change Password</string>
+    <string name="action_expert_dashboard">Expert Dashboard</string>
+    <string name="action_search">Search</string>
+    <string name="action_notifications">Notifications</string>
+    <string name="action_earning_statices">Earning Statistics</string>
+    <string name="action_credit_shell">Credit Shell</string>
+    <string name="cancelbookingSummery">Booking Summery</string>
+    <string name="action_contact_admin">Contact Admin</string>
+    <string name="menu_logout">Logout</string>
+    <string name="title_activity_expert_dashboard">ExpertDashboardActivity</string>
+    <string name="title_activity_expert_edit_profile">Expert Edit Profile</string>
+    <string name="title_activity_speciality_detail">SpecialityDetailActivity</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="title_activity_onboarding">OnboardingActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_change_password">Change Password</string>
+    <string name="user_registration_privacy_policy_and_terms">I Accept Privacy Policy &amp; Terms by creating account</string>
+    <string name="title_activity_view_expert_details">ViewExpertDetailsActivity</string>
+    <string name="selectdate">Select Date</string>
+    <string name="searchbook">SEARCH</string>
+    <string name="reschedule">Reschedule</string>
+    <string name="expert_refund">Review User Refund Request</string>
+    <string name="byconfirming_term">By confirming, I agree to CubeTalk Booking Policy</string>
+
+    //fature time alert
+    <string name="effective">Effective</string>
+    <string name="timechanges">Updated Timings</string>
+    <string name="slotchangeandrate">Updated Slots and Rates</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_notification_channel_id">fcm_default_channel</string>
+    <string name="fcm_message">FCM Message</string>
+    <string name="total_bal">Total Balance</string>
+    <string name="datetime"> Date &amp; Time </string>
+    <string name="date"> Date </string>
+    //month tab text
+
+    <string name="jan">JANUARY</string>
+    <string name="feb">FEBRUARY</string>
+    <string name="mar">MARCH</string>
+    <string name="apr">APRIL</string>
+    <string name="may">MAY</string>
+    <string name="june">JUNE</string>
+    <string name="july">JULY</string>
+    <string name="aug">AUGUST</string>
+    <string name="sep">SEPTEMBER</string>
+    <string name="oct">OCTOBER</string>
+    <string name="nov">NOVEMBER</string>
+    <string name="dec">DECEMBER</string>
+
+    //contact admin
+    <string name="perorcontact">Person For Contact</string>
+    <string name="description">Description</string>
+    <string name="send">SEND</string>
+    <string name="nobookingfound">No Booking Found</string>
+
+</resources>

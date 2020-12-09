@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="?attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/tv_topbg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_65sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@color/colorPrimary"></TextView>
+<TextView
+    android:id="@+id/tv_totalbalance"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:textSize="@dimen/_12sdp"
+    android:textColor="@color/white"
+    android:layout_marginLeft="@dimen/_12sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:text="@string/total_bal"></TextView>
+
+    <TextView
+        android:id="@+id/tv_inramount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="INR"
+        android:layout_marginLeft="@dimen/_12sdp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_totalbalance"
+        android:textSize="@dimen/_16sdp"></TextView>
+    <ImageView
+        android:id="@+id/imgwallet"
+        android:layout_width="@dimen/_28sdp"
+        android:layout_height="@dimen/_28sdp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/icon_wallet"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    <RelativeLayout
+        android:id="@+id/rlshell"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_topbg">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCreditDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="@dimen/_12sdp"
+            android:text="@string/datetime"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_creditshell_itemamount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/_13sdp"
+            android:text="Amount"
+            android:textStyle="bold"
+            ></com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:text="Dedit/Credit"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true">
+        </com.google.android.material.textview.MaterialTextView>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_1sdp"
+    android:background="@color/cardview_default"
+    android:layout_alignParentBottom="true"></TextView>
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rec_credit_shell"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:visibility="visible"
+        app:layout_constrainedHeight="true"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_credit_shell"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@+id/rlshell"></androidx.recyclerview.widget.RecyclerView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

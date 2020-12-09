@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.JanuaryFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_totalearning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:cardBackgroundColor="@color/consulting_slot_time"
+        app:cardUseCompatPadding="true"
+        app:checkedIcon="@null"
+        app:contentPadding="@dimen/_10sdp"
+        tools:cardUseCompatPadding="false"
+        tools:visibility="visible"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginRight="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Earning in November"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="#000000" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtv_total_earningvalue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INR 0"
+                android:textSize="@dimen/_14sdp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                tools:text="INR 0"
+                />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_totalbook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/consulting_slot_time"
+        app:cardUseCompatPadding="true"
+        app:checkedIcon="@null"
+        app:contentPadding="@dimen/_10sdp"
+        tools:cardUseCompatPadding="false"
+        tools:visibility="visible"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginRight="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Booking in November(Confirmed)"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="#000000" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtv_total_bookingvalue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                tools:text="0"
+                android:text="0"/>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+    <RelativeLayout
+        android:id="@+id/rl_book"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/rlshell"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+
+            app:layout_constraintTop_toBottomOf="@+id/tv_topbg">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCreditDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="@dimen/_14sdp"
+                android:text="@string/date"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_creditshell_itemamount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="@dimen/_13sdp"
+                android:text="No of Booking"
+                android:textStyle="bold"
+                ></com.google.android.material.textview.MaterialTextView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_14sdp"
+                android:text="Earning"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true">
+            </com.google.android.material.textview.MaterialTextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/white"
+                android:layout_alignParentBottom="true"></TextView>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rec_earning_statics"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/llpdf"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_below="@id/rlshell"
+            tools:listitem="@layout/item_credit_shell"></androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_65sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:id="@+id/llpdf"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+            <com.google.android.material.card.MaterialCardView
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/consulting_slot_time"
+                app:cardUseCompatPadding="true"
+                app:checkedIcon="@null"
+                app:contentPadding="@dimen/_7sdp"
+                tools:cardUseCompatPadding="false"
+                tools:visibility="visible"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_7sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                tools:ignore="MissingConstraints">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvyad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="YTD Income"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_ytd_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NA"
+                        android:textSize="@dimen/_11sdp"
+
+                        android:layout_below="@+id/tvyad"
+                        />
+                    <ImageView
+                        android:id="@+id/ytdpdf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/pdf_img"></ImageView>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/consulting_slot_time"
+                app:cardUseCompatPadding="true"
+                app:checkedIcon="@null"
+                app:contentPadding="@dimen/_7sdp"
+                tools:cardUseCompatPadding="false"
+                tools:visibility="visible"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                tools:ignore="MissingConstraints">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvlastfyincome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Last FY Income"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_fyval"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NA"
+                        android:textSize="@dimen/_11sdp"
+
+                        android:layout_below="@+id/tvlastfyincome"
+                        />
+                    <ImageView
+                        android:id="@+id/lfypdf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/pdf_img"></ImageView>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_nobook"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/nobookingfound"
+        android:textSize="@dimen/_14sdp"
+        android:gravity="center"></TextView>
+</LinearLayout>

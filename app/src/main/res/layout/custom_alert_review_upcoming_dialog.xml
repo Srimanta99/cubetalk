@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle_rounded_white_xml">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/mImaageView"
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="@dimen/_10sdp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/cross"
+        android:layout_margin="@dimen/_7sdp"></androidx.appcompat.widget.AppCompatImageView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_7sdp"
+        android:textSize="@dimen/_11sdp"
+        android:text="@string/effective"></com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtv_effectivedate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textSize="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_7sdp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/_10sdp"
+      ></com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_7sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_below="@+id/mtv"
+        android:textSize="@dimen/_11sdp"
+        android:text="@string/timechanges"></com.google.android.material.textview.MaterialTextView>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtvTimeChangeval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:layout_below="@+id/mtv"
+        android:textSize="@dimen/_10sdp"
+        android:gravity="right"
+        android:layout_alignParentRight="true"
+        android:text="None"></com.google.android.material.textview.MaterialTextView>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_7sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:layout_below="@+id/mtvTimeChangeval"
+        android:textSize="@dimen/_11sdp"
+        android:text="@string/slotchangeandrate"></com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtvslotChangeandrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:layout_below="@+id/mtvTimeChangeval"
+        android:textSize="@dimen/_10sdp"
+        android:gravity="right"
+        android:layout_alignParentRight="true"
+        android:text=""></com.google.android.material.textview.MaterialTextView>
+
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingDefaultResource"
+    app:cardBackgroundColor="@android:color/transparent"
+   >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCreditDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="@dimen/_12sdp"
+            android:text="28th june 2.39  "
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_creditshell_itemamount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/_12sdp"
+            android:text="500"
+         ></com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/credittype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:layout_marginRight="@dimen/_12sdp"
+            android:text="Dedit"
+            android:layout_alignParentRight="true"></com.google.android.material.textview.MaterialTextView>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_1sdp"
+    android:layout_alignParentBottom="true"
+    android:background="@color/cardview_default"></TextView>
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

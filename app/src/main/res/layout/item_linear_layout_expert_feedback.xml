@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <RatingBar
+        android:id="@+id/rb_expert_feedback"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:max="5"
+        android:rating="4" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtv_expert_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cumque fugiat inventore molestiae nemo quaerat, quo? Eius, praesentium quos? Accusamus atque distinctio esse incidunt minus non numquam, suscipit! Autem, possimus?" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtv_expert_feedback_by"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Adam Smith"
+        android:textStyle="bold" />
+
+</LinearLayout>
