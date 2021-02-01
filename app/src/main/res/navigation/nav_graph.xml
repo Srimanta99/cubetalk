@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="local.impactlife.cubetalk.fragments.JanuaryFragment"
+        android:name="com.cubetalktest.cubetalk.fragments.JanuaryFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_january">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="local.impactlife.cubetalk.fragments.FebruaryFragment"
+        android:name="com.cubetalktest.cubetalk.fragments.FebruaryFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 

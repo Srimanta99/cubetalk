@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
-//apply from: "https://api.mesibo.com/mesibo.gradle"
-
+apply from: "https://api.mesibo.com/mesibo.gradle"
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
     defaultConfig {
-        applicationId "local.impactlife.cubetalk"
+     //   applicationId "local.impactlife.cubetalk"
+        applicationId "com.cubetalktest.cubetalk"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -71,9 +71,16 @@ dependencies {
     implementation "com.mesibo.api:ui:${project.MesiboVersion_Ui}"
     implementation "com.mesibo.api:calls:${project.MesiboVersion_Calls}"*/
 
-   implementation 'com.mesibo.api:mesibo:1.2.0'
+/*   implementation 'com.mesibo.api:mesibo:1.2.0'
     implementation 'com.mesibo.api:ui:1.2.0'
-    implementation 'com.mesibo.api:calls:1.2.0'
+    implementation 'com.mesibo.api:calls:1.2.0'*/
+  //  implementation "com.mesibo.api:mesibo:${project.MesiboVersion_Api}"
+    implementation 'com.mesibo.api:ui:1.2.0'
+   // implementation "com.mesibo.api:callapi:${project.MesiboVersion_CallApi}"
+
+    implementation "com.mesibo.api:mesibo:${project.MesiboVersion_Api}"
+
+    implementation "com.mesibo.api:callapi:${project.MesiboVersion_CallApi}"
 
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
     implementation 'com.google.firebase:firebase-analytics:17.5.0'

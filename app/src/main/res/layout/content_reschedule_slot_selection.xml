@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:fillViewport="true">
 
-            <local.impactlife.cubetalk.RadioGridGroup
+            <com.cubetalktest.cubetalk.RadioGridGroup
                 android:id="@+id/rgg_time_slots"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

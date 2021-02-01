@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<local.impactlife.cubetalk.RadioGridGroup xmlns:android="http://schemas.android.com/apk/res/android"
+<com.cubetalktest.cubetalk.RadioGridGroup xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rgg_time_slots"
@@ -36,4 +36,4 @@
 <!--        app:layout_gravity="fill_horizontal" />-->
 
 
-</local.impactlife.cubetalk.RadioGridGroup>
+</com.cubetalktest.cubetalk.RadioGridGroup>

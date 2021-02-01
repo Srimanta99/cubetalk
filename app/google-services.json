@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:330678286265:android:38e3d378c9a1c4c8f0e868",
+        "mobilesdk_app_id": "1:330678286265:android:34401430158f3f49f0e868",
         "android_client_info": {
-          "package_name": "local.impactlife.cubetalk"
+          "package_name": "com.cubetalktest.cubetalk"
         }
       },
       "oauth_client": [
@@ -30,6 +30,57 @@
             {
               "client_id": "330678286265-d5coeb0mg0mbqo541hj3p7gognjbtgi0.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "330678286265-g16isfajt657itlhk0eha6ggbf0hm4vf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cubetalktest.cubetalk"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330678286265:android:38e3d378c9a1c4c8f0e868",
+        "android_client_info": {
+          "package_name": "local.impactlife.cubetalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330678286265-oc8vdjuvb19dn6td387uvdm009cmjkmj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "local.impactlife.cubetalk",
+            "certificate_hash": "94972dce59d00927e37162acdd0a6982488351ec"
+          }
+        },
+        {
+          "client_id": "330678286265-d5coeb0mg0mbqo541hj3p7gognjbtgi0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkGGKFqRIaoW6Ee2mZHtmWVGSQMmaplaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330678286265-d5coeb0mg0mbqo541hj3p7gognjbtgi0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "330678286265-g16isfajt657itlhk0eha6ggbf0hm4vf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cubetalktest.cubetalk"
+              }
             }
           ]
         }
