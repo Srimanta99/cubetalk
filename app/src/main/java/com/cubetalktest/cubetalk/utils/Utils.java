@@ -222,4 +222,29 @@ public class Utils {
 
         return "";
     }
+
+    public static  long getMilliFromDate(String dateFormat) {
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+        try {
+            date = formatter.parse(dateFormat);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Today is " + date);
+        return date.getTime();
+    }
+
+    public  static long getcurrentTimestemp(){
+        long currenttimestamp=0;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+            String currentDateTime = dateFormat.format(new Date()); // Find todays date
+             currenttimestamp=getMilliFromDate(currentDateTime);
+             return currenttimestamp;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return  currenttimestamp;
+    }
 }

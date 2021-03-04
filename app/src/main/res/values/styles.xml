@@ -8,8 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/colorWindowBackground</item>
         <item name="colorSurface">@color/colorWindowBackground</item>
-        <item name="textInputStyle">
-            @style/Widget.MaterialComponents.TextInputLayout.OutlinedBox
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox
         </item>
 
     </style>

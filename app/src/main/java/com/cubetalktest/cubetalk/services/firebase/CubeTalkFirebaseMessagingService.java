@@ -8,6 +8,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioAttributes;
+import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
@@ -21,6 +22,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
+import java.util.Random;
 
 import com.cubetalktest.cubetalk.R;
 import com.cubetalktest.cubetalk.activities.SplashActivity;
@@ -28,7 +30,7 @@ import com.cubetalktest.cubetalk.activities.SplashActivity;
 public class CubeTalkFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = CubeTalkFirebaseMessagingService.class.getSimpleName();
-
+    MediaPlayer mp;
     // [START on_new_token]
 
     /**
@@ -138,7 +140,13 @@ public class CubeTalkFirebaseMessagingService extends FirebaseMessagingService {
      */
     private void sendNotification(String messageBody) {
         long[] v = {500,1000};
-        Uri soundUri = Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.testsound);
+           Uri soundUri = Uri. parse (ContentResolver. SCHEME_ANDROID_RESOURCE + "://" + getPackageName()+"/" + R.raw.testsound);
+     //   Uri soundUri = Uri. parse (ContentResolver. SCHEME_ANDROID_RESOURCE + "://" + getPackageName() + "/raw/testsound.mp3");
+     //   Uri soundUri = Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.testsound);
+
+        Uri alarmSound = RingtoneManager. getDefaultUri (RingtoneManager. TYPE_NOTIFICATION );
+         mp = MediaPlayer. create (getApplicationContext(),R.raw.mesibo_customcall_tone);
+          mp.start();
 
 //        Intent intent = new Intent(this, SplashActivity.class);
 //        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -185,6 +193,12 @@ public class CubeTalkFirebaseMessagingService extends FirebaseMessagingService {
             notificationManager.createNotificationChannel(channel);
         }
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        notificationManager.notify(new Random().nextInt(100) /* ID of notification */, notificationBuilder.build());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+       // mp.stop();
     }
 }

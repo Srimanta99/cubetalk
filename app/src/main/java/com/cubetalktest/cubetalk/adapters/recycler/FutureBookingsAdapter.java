@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.cubetalktest.cubetalk.mesibicall.CallActivity1;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
@@ -254,6 +255,17 @@ import static android.content.Context.MODE_PRIVATE;
              //   Mesibo.setAccessToken("2e7aeb174f174bfe04344323f31ecb18707a1132f281bfebb15436d");
                // Mesibo.setAccessToken(mSharedPreferences.getString(User.MESIBO_TOKEN,""));
                 Mesibo.start();
+                MesiboCall.CallProperties cp = MesiboCall.getInstance().createCallProperties(true);
+                Mesibo.UserProfile profile = Mesibo.getUserProfile(futureBooking.getExpert().getId());
+                if(null == profile) {
+                    profile = new Mesibo.UserProfile();
+                    profile.address = futureBooking.getExpert().getId();
+                    profile.name = "Some name";
+                }
+                cp.user = profile;
+                cp.parent = userUpcomingBookingsActivity;
+                cp.className = CallActivity.class; // or whatever is your classname
+                MesiboCall.getInstance().callUi(cp);
                // MesiboCall masibocall = MesiboCall.getInstance();
                // masibocall.init(context);
                 // masibocall.setListener(this);
@@ -272,13 +284,17 @@ import static android.content.Context.MODE_PRIVATE;
 
                 int time=Utils.convertSlotTiming(futureBooking.getSlotType());
                 User.CALLTIME=time;
+                long timestamp=Utils.getMilliFromDate(Utils.convertSlotDate(futureBooking.getSlotTime()) + " " + Utils.convertSlotTime(futureBooking.getSlotTime()));
+                //   intent.putExtra("name",pastBooking.getUser().getName());
+                com.cubetalktest.cubetalk.models.User.TIMESTEMP=timestamp;
             //    Toast.makeText(userUpcomingBookingsActivity, String.valueOf(User.CALLTIME),Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(userUpcomingBookingsActivity, CallActivity.class);
               //  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 intent.putExtra("video", true);
                 intent.putExtra("address", futureBooking.getExpert().getId());
                 intent.putExtra("incoming", false);
-                userUpcomingBookingsActivity.startActivity(intent);
+               // userUpcomingBookingsActivity.startActivity(intent);
+
 
                /* MesiboCall.getInstance().launchCallActivity(userUpcomingBookingsActivity, CallActivity.class,
                         futureBooking.getExpert().getId(), false);*/
@@ -340,7 +356,6 @@ import static android.content.Context.MODE_PRIVATE;
 
             long mills = date_slot.getTime() - currentdatetime.getTime();
             int hours = (int) (mills/(1000 * 60 * 60));
-
             SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
             Date date = inputDateFormat.parse(futureBooking.getSlotDate());
             Date currentDate = Calendar.getInstance().getTime();
@@ -348,10 +363,10 @@ import static android.content.Context.MODE_PRIVATE;
                 holder.mRescheduleBookingButton.setEnabled(true);
                 holder.mCancelBookingButton.setEnabled(true);
             }
-          //  if (currentDate.before(date) && hours<=1) {
+            if (currentDate.before(date) && hours>=1) {
                 holder.mCallExpertBookingButton.setEnabled(true);
-             //   holder.mChatWithExpertButton.setEnabled(true);
-           // }
+                holder.mChatWithExpertButton.setEnabled(true);
+            }
             //holder.mCancelBookingButton.setEnabled(true);
 
         } catch (ParseException e) {

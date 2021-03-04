@@ -24,4 +24,5 @@ public class User {
     public static final String MESIBO_ID = "mesiboid";
     public static final String MESIBO_TOKEN = "mesibotoken";
     public static  int CALLTIME=0;
+    public static long TIMESTEMP=0;
 }

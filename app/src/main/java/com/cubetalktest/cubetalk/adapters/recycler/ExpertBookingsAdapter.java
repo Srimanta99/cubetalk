@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.cubetalktest.cubetalk.mesibicall.CallActivity1;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -179,7 +180,7 @@ public class ExpertBookingsAdapter extends RecyclerView.Adapter<ExpertBookingsAd
         holder.mConsultationTopicText.setText(topic.getName());
         String currency=(mSharedPreferences.getInt(com.cubetalktest.cubetalk.models.User.COUNTRYID, 0)== com.cubetalktest.cubetalk.models.User.INDIACOUNTRYID? "INR ":"INR ");
 
-        holder.mConsultationSlotTypeAndPrice.setText(Utils.convertSlotType(pastBooking.getSlotType()) + " - 500 "+currency);
+        holder.mConsultationSlotTypeAndPrice.setText(Utils.convertSlotType(pastBooking.getSlotType()) + " -INR "+pastBooking.getAmount_paid());
 
         holder.mBookedDateAndTimeText.setText(Utils.convertSlotDate(pastBooking.getCreatedAt()) + " " + Utils.convertSlotTime(pastBooking.getCreatedAt()));
 
@@ -236,19 +237,35 @@ public class ExpertBookingsAdapter extends RecyclerView.Adapter<ExpertBookingsAd
               //  userProfile.name = "232284";
              // userProfile.address = pastBooking.getUser().getId();
              // userProfile.name = pastBooking.getUser().getName();
+
+              MesiboCall.CallProperties cp = MesiboCall.getInstance().createCallProperties(true);
+              Mesibo.UserProfile profile = Mesibo.getUserProfile(pastBooking.getUser().getId());
+              if(null == profile) {
+                  profile = new Mesibo.UserProfile();
+                  profile.address = pastBooking.getUser().getId();
+                  profile.name = pastBooking.getUser().getName();
+              }
+              cp.user = profile;
+              cp.parent = expertBookingManagementActivity;
+              cp.className = CallActivity.class; // or whatever is your classname
+              MesiboCall.getInstance().callUi(cp);
               Mesibo.UserProfile u = new Mesibo.UserProfile();
               u.name = pastBooking.getUser().getName();
               u.address = pastBooking.getUser().getId();
               Mesibo.setUserProfile(u, false);
-              Intent intent = new Intent(expertBookingManagementActivity, CallActivity.class);
               int time=Utils.convertSlotTiming(pastBooking.getSlotType());
               com.cubetalktest.cubetalk.models.User.CALLTIME=time;
+
+              long timestamp=Utils.getMilliFromDate(Utils.convertSlotDate(pastBooking.getSlotDate()) + " " + Utils.convertSlotTime(pastBooking.getSlotTime()));
+              //   intent.putExtra("name",pastBooking.getUser().getName());
+              com.cubetalktest.cubetalk.models.User.TIMESTEMP=timestamp;
+              //Utils.getcurrentTimestemp();
+              Intent intent = new Intent(expertBookingManagementActivity, CallActivity.class);
               //  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
               intent.putExtra("video", true);
               intent.putExtra("address", pastBooking.getUser().getId());
-           //   intent.putExtra("name",pastBooking.getUser().getName());
               intent.putExtra("incoming", false);
-              expertBookingManagementActivity.startActivity(intent);
+           //   expertBookingManagementActivity.startActivity(intent);
             //  MesiboCall.getInstance().launchCallActivity(expertBookingManagementActivity, CallActivity.class,
                      // pastBooking.getUser().getId(), false);
              // MesiboCallConfig config = masibocall.getConfig();

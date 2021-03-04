@@ -75,12 +75,18 @@ dependencies {
     implementation 'com.mesibo.api:ui:1.2.0'
     implementation 'com.mesibo.api:calls:1.2.0'*/
   //  implementation "com.mesibo.api:mesibo:${project.MesiboVersion_Api}"
-    implementation 'com.mesibo.api:ui:1.2.0'
+   // implementation 'com.mesibo.api:ui:1.2.0'
+    implementation 'com.mesibo.api:ui:1.2.81'
+
    // implementation "com.mesibo.api:callapi:${project.MesiboVersion_CallApi}"
 
-    implementation "com.mesibo.api:mesibo:${project.MesiboVersion_Api}"
+    implementation 'com.mesibo.api:mesibo:1.2.70'
+   // implementation "com.mesibo.api:mesibo:${project.MesiboVersion_Api}"
 
-    implementation "com.mesibo.api:callapi:${project.MesiboVersion_CallApi}"
+   // implementation "com.mesibo.api:callapi:${project.MesiboVersion_CallApi}"
+    //implementation "com.mesibo.api:calls:${project.MesiboVersion_Calls}"
+      implementation 'com.mesibo.api:calls:1.2.77'
+    //implementation 'com.mesibo.api:callui:1.2.71'-*64
 
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
