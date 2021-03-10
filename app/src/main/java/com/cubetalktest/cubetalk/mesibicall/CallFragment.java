@@ -24,6 +24,10 @@ import com.mesibo.calls.api.MesiboVideoView;
 
 import com.cubetalktest.cubetalk.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import static com.mesibo.calls.api.MesiboCall.MESIBOCALL_SOUND_RINGING;
 import static com.mesibo.calls.api.MesiboCall.MESIBOCALL_UI_STATE_SHOWCONTROLS;
 import static com.mesibo.calls.api.MesiboCall.MESIBOCALL_UI_STATE_SHOWINCOMING;
@@ -228,12 +232,26 @@ public class CallFragment extends Fragment implements MesiboCall.InProgressListe
 
         if(!mCall.isIncoming()) {
             Long calltine = Long.valueOf(User.CALLTIME);
-           // User.TIMESTEMP=Utils.getcurrentTimestemp()-4000;
-            if (User.TIMESTEMP>Utils.getcurrentTimestemp()) {
-                new CountDownTimer(calltine * 1000, 1000) {
+            String fullDateSlot=User.FullDateSlot;
+            long reamning_mills=0;
+            try{
+                SimpleDateFormat datetimeforslot=new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+                Date date_slot = datetimeforslot.parse("10/03/2021 6:30 PM");
+                // Date currentdate = new Date();
+                String currentDate_ = new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.getDefault()).format(new Date());
+                Date currentdatetime=datetimeforslot.parse(currentDate_);
+             //   reamning_mills = ((date_slot.getTime())+(calltine*60000)) - currentdatetime.getTime();
+
+                reamning_mills=( currentdatetime.getTime()-date_slot.getTime());
+                long seconds = (reamning_mills / 1000)  ;
+                long remailngcalltimediff=(calltine*60-seconds)*1000;
+                new CountDownTimer(remailngcalltimediff, 1000) {
                     public void onTick(long millisUntilFinished) {
-                        ui.status.setText("Seconds remaining " + String.valueOf(calltine - counter));
-                        counter++;
+                        int sec= (int) (remailngcalltimediff-counter);
+                        int min=(sec / 1000) / 60;
+                        int remainsec=(sec / 1000) % 60;
+                        ui.status.setText("Time remaining " + String.valueOf(min)+" Min. "+ String.valueOf(remainsec)+" Sec. ");
+                        counter=counter+1000;
                     }
 
                     public void onFinish() {
@@ -245,7 +263,14 @@ public class CallFragment extends Fragment implements MesiboCall.InProgressListe
 
                     }
                 }.start();
-            }else{
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+           // User.TIMESTEMP=Utils.getcurrentTimestemp()-4000;
+         //   if (User.TIMESTEMP>Utils.getcurrentTimestemp()) {
+
+           /* }else{
                 long timediff=Utils.getcurrentTimestemp()-User.TIMESTEMP;
                 int time= (int) (timediff/1000);
                 int timeElapsed= (int) (calltine-time);
@@ -264,7 +289,7 @@ public class CallFragment extends Fragment implements MesiboCall.InProgressListe
 
                     }
                 }.start();
-            }
+            }*/
         }
     }
 

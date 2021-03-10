@@ -24,7 +24,11 @@ import com.mesibo.calls.api.MesiboCall;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import com.cubetalktest.cubetalk.activities.ExpertBookingManagementActivity;
 import com.cubetalktest.cubetalk.databinding.ItemCardExpertBookingBinding;
@@ -195,6 +199,39 @@ public class ExpertBookingsAdapter extends RecyclerView.Adapter<ExpertBookingsAd
             holder.mConformButton.setVisibility(View.VISIBLE);
             holder.mCancelButton.setVisibility(View.VISIBLE);
         }*/
+        try {
+            SimpleDateFormat datetimeforslot = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+            String slotfulldate=Utils.convertSlotDate(pastBooking.getSlotDate())+" "+Utils.convertSlotTime(pastBooking.getSlotTime());
+          //  Date date_slot = datetimeforslot.parse(slotfulldate);
+            String currentDate_ = new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.getDefault()).format(new Date());
+            Date date_slot = datetimeforslot.parse("10/03/2021 05:30 PM");
+            Date currentdatetime = datetimeforslot.parse(currentDate_);
+
+
+            long mills = ((date_slot.getTime())+(Utils.convertSlotTiming(pastBooking.getSlotType())*60000)) - currentdatetime.getTime();
+            int hours = (int) (mills/(1000 * 60 * 60));
+            SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
+            Date date = inputDateFormat.parse(pastBooking.getSlotDate());
+            Date currentDate = Calendar.getInstance().getTime();
+            if (currentDate.before(date) && hours>=6) {
+                holder.mCancelButton.setEnabled(true);
+            }
+          //  if (  date_slot.getTime()-(60 * 60 * 1000)<=1) {
+           // if (currentDate.before(date) && hours<=1) {
+            if ( mills>0 && mills<3600000+(Utils.convertSlotTiming(pastBooking.getSlotType())*60000))   {
+                holder.mCallButton.setEnabled(true);
+                holder.mChat.setEnabled(true);
+            }
+           // if (mills+(Utils.convertSlotTiming(pastBooking.getSlotType())*1000)<0){
+               /* if (currentdatetime.after(date_slot)&& mills<0){
+                holder.mCallButton.setEnabled(false);
+                holder.mChat.setEnabled(false);
+                holder.mCancelButton.setEnabled(false);
+            }*/
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
         if (pastBooking.getStatus()==2){
             holder.mCallButton.setVisibility(View.VISIBLE);
@@ -249,6 +286,7 @@ public class ExpertBookingsAdapter extends RecyclerView.Adapter<ExpertBookingsAd
               cp.parent = expertBookingManagementActivity;
               cp.className = CallActivity.class; // or whatever is your classname
               MesiboCall.getInstance().callUi(cp);
+
               Mesibo.UserProfile u = new Mesibo.UserProfile();
               u.name = pastBooking.getUser().getName();
               u.address = pastBooking.getUser().getId();
@@ -265,7 +303,7 @@ public class ExpertBookingsAdapter extends RecyclerView.Adapter<ExpertBookingsAd
               intent.putExtra("video", true);
               intent.putExtra("address", pastBooking.getUser().getId());
               intent.putExtra("incoming", false);
-           //   expertBookingManagementActivity.startActivity(intent);
+           //  expertBookingManagementActivity.startActivity(intent);
             //  MesiboCall.getInstance().launchCallActivity(expertBookingManagementActivity, CallActivity.class,
                      // pastBooking.getUser().getId(), false);
              // MesiboCallConfig config = masibocall.getConfig();

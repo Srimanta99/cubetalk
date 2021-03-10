@@ -129,12 +129,10 @@ public class CallActivity extends MesiboCallActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call);
         int res = checkPermissions(mCp.video.enabled);
-
         if(res < 0) {
             finish();
             return;
         }
-
 
         if(0 == res) {
             initCall();

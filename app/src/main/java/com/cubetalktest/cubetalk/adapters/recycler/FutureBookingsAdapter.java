@@ -252,6 +252,12 @@ import static android.content.Context.MODE_PRIVATE;
         holder.mCallExpertBookingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                    String slotDate=Utils.convertSlotDate(futureBooking.getSlotDate());
+                    String slotTime=Utils.convertSlotTime(futureBooking.getSlotTime());
+                    String slotfulldate=slotDate+" "+slotTime;
+                    User.FullDateSlot=slotfulldate;
              //   Mesibo.setAccessToken("2e7aeb174f174bfe04344323f31ecb18707a1132f281bfebb15436d");
                // Mesibo.setAccessToken(mSharedPreferences.getString(User.MESIBO_TOKEN,""));
                 Mesibo.start();
@@ -260,7 +266,7 @@ import static android.content.Context.MODE_PRIVATE;
                 if(null == profile) {
                     profile = new Mesibo.UserProfile();
                     profile.address = futureBooking.getExpert().getId();
-                    profile.name = "Some name";
+                    profile.name = futureBooking.getExpert().getName();
                 }
                 cp.user = profile;
                 cp.parent = userUpcomingBookingsActivity;
@@ -293,7 +299,7 @@ import static android.content.Context.MODE_PRIVATE;
                 intent.putExtra("video", true);
                 intent.putExtra("address", futureBooking.getExpert().getId());
                 intent.putExtra("incoming", false);
-               // userUpcomingBookingsActivity.startActivity(intent);
+                //userUpcomingBookingsActivity.startActivity(intent);
 
 
                /* MesiboCall.getInstance().launchCallActivity(userUpcomingBookingsActivity, CallActivity.class,
@@ -348,13 +354,14 @@ import static android.content.Context.MODE_PRIVATE;
             String slotDate=Utils.convertSlotDate(futureBooking.getSlotDate());
             String slotTime=Utils.convertSlotTime(futureBooking.getSlotTime());
             String slotfulldate=slotDate+" "+slotTime;
-            SimpleDateFormat datetimeforslot=new SimpleDateFormat("dd/MM/yyyy HH:mm a");
-            Date date_slot = datetimeforslot.parse(slotfulldate);
+           SimpleDateFormat datetimeforslot=new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+            Date date_slot = datetimeforslot.parse("10/03/2021 06:30 PM");
+           // Date date_slot = datetimeforslot.parse(slotfulldate);
            // Date currentdate = new Date();
-            String currentDate_ = new SimpleDateFormat("dd/MM/yyyy HH:mm a", Locale.getDefault()).format(new Date());
+            String currentDate_ = new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.getDefault()).format(new Date());
             Date currentdatetime=datetimeforslot.parse(currentDate_);
 
-            long mills = date_slot.getTime() - currentdatetime.getTime();
+            long mills = ((date_slot.getTime())+(Utils.convertSlotTiming(futureBooking.getSlotType())*60000)) - currentdatetime.getTime();
             int hours = (int) (mills/(1000 * 60 * 60));
             SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
             Date date = inputDateFormat.parse(futureBooking.getSlotDate());
@@ -363,10 +370,17 @@ import static android.content.Context.MODE_PRIVATE;
                 holder.mRescheduleBookingButton.setEnabled(true);
                 holder.mCancelBookingButton.setEnabled(true);
             }
-            if (currentDate.before(date) && hours>=1) {
+            if ( mills>0 && mills<3600000+(Utils.convertSlotTiming(futureBooking.getSlotType())*60000))   {
+            //if (currentDate.before(date) && hours<=1) {
                 holder.mCallExpertBookingButton.setEnabled(true);
                 holder.mChatWithExpertButton.setEnabled(true);
-            }
+           }
+           /* if (mills+(Utils.convertSlotTiming(futureBooking.getSlotType())*1000)<0){
+                holder.mCallExpertBookingButton.setEnabled(false);
+                holder.mChatWithExpertButton.setEnabled(false);
+                holder.mCancelBookingButton.setEnabled(false);
+                holder.mRescheduleBookingButton.setEnabled(false);
+            }*/
             //holder.mCancelBookingButton.setEnabled(true);
 
         } catch (ParseException e) {
