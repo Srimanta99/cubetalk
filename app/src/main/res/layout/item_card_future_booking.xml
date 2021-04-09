@@ -161,11 +161,11 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/mbtn_call_expert"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/text_button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:enabled="false"
+               android:textColor="@color/black_overlay"
                 android:text="Call"
                 android:textAllCaps="false"
                 android:textSize="12sp"
@@ -177,7 +177,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:enabled="false"
+
                 android:text="Chat"
                 android:textAllCaps="false"
                 android:textSize="12sp" />

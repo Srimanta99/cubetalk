@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
@@ -135,7 +136,15 @@ public class RescheduleBookingActivity extends AppCompatActivity {
            @Override
            public void onResponse(Call<RescheduleApiResponse> call, Response<RescheduleApiResponse> response) {
                if (response.body().ismSuccess()){
-                   Toast.makeText(getApplicationContext(),response.body().getMessge().toString(),Toast.LENGTH_LONG).show();
+                   new MaterialAlertDialogBuilder(getApplicationContext())
+                           .setTitle("Cube Talk")
+                           .setMessage("Booking rescheduled successfully")
+                           .setPositiveButton("Ok", (dialog, which) -> {
+                               //startpayment();
+                               dialog.dismiss();
+                           })
+                           .show();
+                   //Toast.makeText(getApplicationContext(),response.body().getMessge().toString(),Toast.LENGTH_LONG).show();
                    Intent intent=new Intent(getApplicationContext(),HomeActivity.class);
                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                    startActivity(intent);

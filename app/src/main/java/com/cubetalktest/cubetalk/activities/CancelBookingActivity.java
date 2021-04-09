@@ -17,7 +17,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.cubetalktest.cubetalk.databinding.ActivityCancelBookingBinding;
+import com.cubetalktest.cubetalk.databinding.ContentCencelBookingBinding;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.gson.Gson;
@@ -28,8 +31,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import com.cubetalktest.cubetalk.R;
-import com.cubetalktest.cubetalk.databinding.ActivityCancelBookingBinding;
-import com.cubetalktest.cubetalk.databinding.ContentCencelBookingBinding;
+
 import com.cubetalktest.cubetalk.models.User;
 import com.cubetalktest.cubetalk.models.common.Booking;
 import com.cubetalktest.cubetalk.models.user_cancel_booking.UserCancelBookingResponse;
@@ -112,7 +114,15 @@ public class  CancelBookingActivity extends AppCompatActivity {
             public void onResponse(Call<UserCancelBookingResponse> call, Response<UserCancelBookingResponse> response) {
                 Log.d(TAG, "onResponse: responseCancelbook: " + response.toString());
                 if (response.body().isSuccess()){
-                    Toast.makeText(getApplicationContext(),response.body().getMessage(),Toast.LENGTH_LONG).show();
+                    new MaterialAlertDialogBuilder(getApplicationContext())
+                            .setTitle("Cube Talk")
+                            .setMessage("Booking Cancelled Successfully")
+                            .setPositiveButton("Ok", (dialog, which) -> {
+                                //startpayment();
+                                dialog.dismiss();
+                            })
+                            .show();
+                  //  Toast.makeText(getApplicationContext(),response.body().getMessage(),Toast.LENGTH_LONG).show();
                     Intent intent=new Intent();
                     setResult(201,intent);
                     finish();

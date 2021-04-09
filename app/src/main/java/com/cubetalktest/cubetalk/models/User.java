@@ -26,4 +26,6 @@ public class User {
     public static  int CALLTIME=0;
     public static long TIMESTEMP=0;
     public static String FullDateSlot="";
+    public static String EndDateSlot="";
+    public static  String BOOKEDID="";
 }

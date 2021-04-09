@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@drawable/splash_with_bg"
     tools:context=".activities.SplashActivity">
 
-    <include layout="@layout/background_logo" />
+   <!-- <include layout="@layout/background_logo" />
 
-    <include layout="@layout/content_splash" />
+    <include layout="@layout/content_splash" />-->
 
     <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
     <!--        android:layout_width="match_parent"-->

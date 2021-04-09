@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,10 +83,23 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aspernatur cupiditate dolor."
+            android:text="CubeTalk is a diversified 1:1 Video Consulting platform catering to a range of Specialities and embedded Topics."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/civ_user_image" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Connect soon with one of our Eminent Experts for a mutually rewarding experience!"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -138,5 +154,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
+    </ScrollView>
 </androidx.core.widget.NestedScrollView>

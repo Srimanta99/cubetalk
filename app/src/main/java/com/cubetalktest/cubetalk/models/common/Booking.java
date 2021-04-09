@@ -43,6 +43,30 @@ public class Booking implements Serializable {
     @SerializedName("amount_paid")
     private String amount_paid;
 
+    public String getSlotEndDate() {
+        return slotEndDate;
+    }
+
+    public void setSlotEndDate(String slotEndDate) {
+        this.slotEndDate = slotEndDate;
+    }
+
+    public String getSlotEndTime() {
+        return slotEndTime;
+    }
+
+    public void setSlotEndTime(String slotEndTime) {
+        this.slotEndTime = slotEndTime;
+    }
+
+    @Expose
+    @SerializedName("slot_end_date")
+    private String slotEndDate;
+
+    @Expose
+    @SerializedName("slot_end_time")
+    private String slotEndTime;
+
     
 
     public String getPaymentMode() {

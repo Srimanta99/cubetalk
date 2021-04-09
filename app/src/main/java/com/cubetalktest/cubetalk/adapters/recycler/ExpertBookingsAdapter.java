@@ -1,5 +1,6 @@
 package com.cubetalktest.cubetalk.adapters.recycler;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.cubetalktest.cubetalk.R;
+import com.cubetalktest.cubetalk.activities.HomeActivity;
+import com.cubetalktest.cubetalk.activities.PaymentActivity;
+
+
+import com.cubetalktest.cubetalk.databinding.ItemCardExpertBookingBinding;
 import com.cubetalktest.cubetalk.mesibicall.CallActivity1;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -24,6 +31,7 @@ import com.mesibo.calls.api.MesiboCall;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -31,7 +39,7 @@ import java.util.List;
 import java.util.Locale;
 
 import com.cubetalktest.cubetalk.activities.ExpertBookingManagementActivity;
-import com.cubetalktest.cubetalk.databinding.ItemCardExpertBookingBinding;
+
 import com.cubetalktest.cubetalk.mesibicall.CallActivity;
 import com.cubetalktest.cubetalk.models.common.Booking;
 import com.cubetalktest.cubetalk.models.common.Topic;
@@ -204,7 +212,8 @@ public class ExpertBookingsAdapter extends RecyclerView.Adapter<ExpertBookingsAd
             String slotfulldate=Utils.convertSlotDate(pastBooking.getSlotDate())+" "+Utils.convertSlotTime(pastBooking.getSlotTime());
           //  Date date_slot = datetimeforslot.parse(slotfulldate);
             String currentDate_ = new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.getDefault()).format(new Date());
-            Date date_slot = datetimeforslot.parse("10/03/2021 05:30 PM");
+            Date date_slot = datetimeforslot.parse(slotfulldate);
+           // Date date_slot = datetimeforslot.parse("25/03/2021 11:15 AM");
             Date currentdatetime = datetimeforslot.parse(currentDate_);
 
 
@@ -213,16 +222,32 @@ public class ExpertBookingsAdapter extends RecyclerView.Adapter<ExpertBookingsAd
             SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
             Date date = inputDateFormat.parse(pastBooking.getSlotDate());
             Date currentDate = Calendar.getInstance().getTime();
-            if (currentDate.before(date) && hours>=6) {
+            if (currentDate.before(date) && hours>=1) {
                 holder.mCancelButton.setEnabled(true);
             }
           //  if (  date_slot.getTime()-(60 * 60 * 1000)<=1) {
            // if (currentDate.before(date) && hours<=1) {
-            if ( mills>0 && mills<3600000+(Utils.convertSlotTiming(pastBooking.getSlotType())*60000))   {
-                holder.mCallButton.setEnabled(true);
-                holder.mChat.setEnabled(true);
+            if ( mills>0 && mills<301000+(Utils.convertSlotTiming(pastBooking.getSlotType())*60000))   {
+           // if(date_slot.getTime()<currentdatetime.getTime()){
+                holder.mCallButton.setTextColor(expertBookingManagementActivity.getResources().getColor(R.color.colorPrimary));
+              //  holder.mChat.setTextColor(expertBookingManagementActivity.getResources().getColor(R.color.colorPrimary));
+               // holder.mCallButton.setEnabled(true);
+                //holder.mChat.setEnabled(true);
+            }else{
+                holder.mCallButton.setTextColor(expertBookingManagementActivity.getResources().getColor(R.color.black_overlay));
+
             }
-           // if (mills+(Utils.convertSlotTiming(pastBooking.getSlotType())*1000)<0){
+
+            String slot_end_datetime=Utils.convertSlotDate(pastBooking.getSlotEndDate())+" "+Utils.convertSlotTime(pastBooking.getSlotEndTime());
+            Date slotEndDateTime=datetimeforslot.parse(slot_end_datetime);
+            //Date slotEndDateTime=datetimeforslot.parse("25/03/2021 10:38 AM");
+            if (currentdatetime.after(slotEndDateTime)){
+                holder.mChat.setTextColor(expertBookingManagementActivity.getResources().getColor(R.color.black_overlay));
+
+            }else
+                holder.mChat.setTextColor(expertBookingManagementActivity.getResources().getColor(R.color.colorPrimary));
+
+            // if (mills+(Utils.convertSlotTiming(pastBooking.getSlotType())*1000)<0){
                /* if (currentdatetime.after(date_slot)&& mills<0){
                 holder.mCallButton.setEnabled(false);
                 holder.mChat.setEnabled(false);
@@ -263,10 +288,78 @@ public class ExpertBookingsAdapter extends RecyclerView.Adapter<ExpertBookingsAd
       holder.mCallButton.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-            //  Mesibo.setAccessToken(mSharedPreferences.getString(local.impactlife.cubetalk.models.User.MESIBO_TOKEN,""));
+              try {
+                  String slotfulldate=Utils.convertSlotDate(pastBooking.getSlotDate())+" "+Utils.convertSlotTime(pastBooking.getSlotTime());
+                  SimpleDateFormat datetimeforslot = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+                  String currentDate_ = new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.getDefault()).format(new Date());
+                  Date currentdatetime = datetimeforslot.parse(currentDate_);
+                 Date date_slot = datetimeforslot.parse(slotfulldate);
+                 // Date date_slot = datetimeforslot.parse("25/03/2021 11:15 AM");
+                   String slot_EndDateTime=Utils.convertSlotDate(pastBooking.getSlotEndDate())+" "+Utils.convertSlotTime(pastBooking.getSlotEndTime());
+                  Date slotEndDateTime=datetimeforslot.parse(slot_EndDateTime);
+
+                  if (currentdatetime.getTime()+1000<date_slot.getTime()){
+                      new MaterialAlertDialogBuilder(expertBookingManagementActivity)
+                              .setTitle("Cube Talk")
+                              .setMessage("Please wait for your slot time")
+                              .setPositiveButton("Ok", (dialog, which) -> {
+                                  //startpayment();
+                                  dialog.dismiss();
+                              })
+                              .show();
+                  }
+                  else if (currentdatetime.getTime()+1000>slotEndDateTime.getTime()){
+                      new MaterialAlertDialogBuilder(expertBookingManagementActivity)
+                              .setTitle("Cube Talk")
+                              .setMessage("You missed the meeting slot")
+                              .setPositiveButton("Ok", (dialog, which) -> {
+                                  //startpayment();
+                                  dialog.dismiss();
+                              })
+                              .show();
+                  }
+                  else if(currentdatetime.getTime()+1000>date_slot.getTime()){
+                      Mesibo.start();
+                      MesiboCall.CallProperties cp = MesiboCall.getInstance().createCallProperties(true);
+                      Mesibo.UserProfile profile = Mesibo.getUserProfile(pastBooking.getUser().getId());
+                      if(null == profile) {
+                          profile = new Mesibo.UserProfile();
+                          profile.address = pastBooking.getUser().getId();
+                          profile.name = pastBooking.getUser().getName();
+                      }
+                      cp.user = profile;
+                      cp.parent = expertBookingManagementActivity;
+                      cp.className = CallActivity.class; // or whatever is your classname
+                      MesiboCall.getInstance().callUi(cp);
+
+                      Mesibo.UserProfile u = new Mesibo.UserProfile();
+                      u.name = pastBooking.getUser().getName();
+                      u.address = pastBooking.getUser().getId();
+                      Mesibo.setUserProfile(u, false);
+                      int time=Utils.convertSlotTiming(pastBooking.getSlotType());
+                      com.cubetalktest.cubetalk.models.User.CALLTIME=time;
+
+                     // long timestamp=Utils.getMilliFromDate(Utils.convertSlotDate(pastBooking.getSlotDate()) + " " + Utils.convertSlotTime(pastBooking.getSlotTime()));
+                      //   intent.putExtra("name",pastBooking.getUser().getName());
+                     // com.cubetalktest.cubetalk.models.User.TIMESTEMP=timestamp;
+                      com.cubetalktest.cubetalk.models.User.BOOKEDID=pastBooking.getBooked_id();
+                      // String slotEndDateTime=Utils.convertSlotDate(pastBooking.getSlotEndDate())+" "+Utils.convertSlotTime(pastBooking.getSlotEndTime());
+                      com.cubetalktest.cubetalk.models.User.EndDateSlot=slot_EndDateTime;
+                      //Utils.getcurrentTimestemp();
+                     // Intent intent = new Intent(expertBookingManagementActivity, CallActivity.class);
+                      //  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                      //intent.putExtra("video", true);
+                      //intent.putExtra("address", pastBooking.getUser().getId());
+                     // intent.putExtra("incoming", false);
+                  }
+              } catch (ParseException e) {
+                  e.printStackTrace();
+              }
+
+              //  Mesibo.setAccessToken(mSharedPreferences.getString(local.impactlife.cubetalk.models.User.MESIBO_TOKEN,""));
              // Mesibo.setAccessToken("a16c6806b24340f1c4afdab2f66a2b96ea38e2201fd2e99154134");
             //  Mesibo.setAccessToken("2e7aeb174f174bfe04344323f31ecb18707a1132f281bfebb15436d");
-              Mesibo.start();
+            //  Mesibo.start();
               //MesiboCall masibocall = MesiboCall.getInstance();
               //masibocall.init(expertBookingManagementActivity);
               // masibocall.setListener(this);
@@ -275,34 +368,7 @@ public class ExpertBookingsAdapter extends RecyclerView.Adapter<ExpertBookingsAd
              // userProfile.address = pastBooking.getUser().getId();
              // userProfile.name = pastBooking.getUser().getName();
 
-              MesiboCall.CallProperties cp = MesiboCall.getInstance().createCallProperties(true);
-              Mesibo.UserProfile profile = Mesibo.getUserProfile(pastBooking.getUser().getId());
-              if(null == profile) {
-                  profile = new Mesibo.UserProfile();
-                  profile.address = pastBooking.getUser().getId();
-                  profile.name = pastBooking.getUser().getName();
-              }
-              cp.user = profile;
-              cp.parent = expertBookingManagementActivity;
-              cp.className = CallActivity.class; // or whatever is your classname
-              MesiboCall.getInstance().callUi(cp);
 
-              Mesibo.UserProfile u = new Mesibo.UserProfile();
-              u.name = pastBooking.getUser().getName();
-              u.address = pastBooking.getUser().getId();
-              Mesibo.setUserProfile(u, false);
-              int time=Utils.convertSlotTiming(pastBooking.getSlotType());
-              com.cubetalktest.cubetalk.models.User.CALLTIME=time;
-
-              long timestamp=Utils.getMilliFromDate(Utils.convertSlotDate(pastBooking.getSlotDate()) + " " + Utils.convertSlotTime(pastBooking.getSlotTime()));
-              //   intent.putExtra("name",pastBooking.getUser().getName());
-              com.cubetalktest.cubetalk.models.User.TIMESTEMP=timestamp;
-              //Utils.getcurrentTimestemp();
-              Intent intent = new Intent(expertBookingManagementActivity, CallActivity.class);
-              //  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-              intent.putExtra("video", true);
-              intent.putExtra("address", pastBooking.getUser().getId());
-              intent.putExtra("incoming", false);
            //  expertBookingManagementActivity.startActivity(intent);
             //  MesiboCall.getInstance().launchCallActivity(expertBookingManagementActivity, CallActivity.class,
                      // pastBooking.getUser().getId(), false);
@@ -315,7 +381,37 @@ public class ExpertBookingsAdapter extends RecyclerView.Adapter<ExpertBookingsAd
         holder.mChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               expertBookingManagementActivity.callChatApi(pastBooking);
+
+                try{
+                    SimpleDateFormat datetimeforslot = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+                    String currentDate_ = new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.getDefault()).format(new Date());
+                    Date currentdatetime = datetimeforslot.parse(currentDate_);
+                    //  Date currentDate = Calendar.getInstance().getTime();
+                    String slot_end_datetime=Utils.convertSlotDate(pastBooking.getSlotEndDate())+" "+Utils.convertSlotTime(pastBooking.getSlotEndTime());
+                    Date slotEndDateTime=datetimeforslot.parse(slot_end_datetime);
+                    //Date slotEndDateTime=datetimeforslot.parse("25/03/2021 10:38 AM");
+                    if (currentdatetime.after(slotEndDateTime)){
+                        new MaterialAlertDialogBuilder(expertBookingManagementActivity)
+                                .setTitle("Cube Talk")
+                                .setMessage("You missed the chat slot")
+                                .setPositiveButton("Ok", (dialog, which) -> {
+                                    //startpayment();
+                                    dialog.dismiss();
+                                })
+                                .show();
+                    }else{
+                        ((Activity)expertBookingManagementActivity).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                expertBookingManagementActivity.callChatApi(pastBooking);
+
+                            }
+                        });
+                    }
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -340,6 +436,7 @@ public class ExpertBookingsAdapter extends RecyclerView.Adapter<ExpertBookingsAd
             public void onResponse(Call<ExpertConfirmBookingResponse> call, Response<ExpertConfirmBookingResponse> response) {
                 Log.d(TAG, "onResponse: responseConfirmbookExpert: " + response.toString());
                 if (response.body().isSuccess()){
+
                     Toast.makeText(expertBookingManagementActivity, response.body().getMessage(), Toast.LENGTH_LONG).show();
                    // mBookings.remove(position);
                     //notifyItemRemoved(position);
@@ -395,7 +492,17 @@ public class ExpertBookingsAdapter extends RecyclerView.Adapter<ExpertBookingsAd
             public void onResponse(Call<ExpertCancelBookingResponse> call, Response<ExpertCancelBookingResponse> response) {
                 Log.d(TAG, "onResponse: responseCancelbookExpert: " + response.toString());
                 if (response.body().isSuccess()){
-                    Toast.makeText(expertBookingManagementActivity, response.body().getMessage(), Toast.LENGTH_LONG).show();
+
+                    new MaterialAlertDialogBuilder(expertBookingManagementActivity)
+                            .setTitle("Cube Talk")
+                            .setMessage("Booking Cancelled Successfully")
+                            .setPositiveButton("Ok", (dialog, which) -> {
+                                //startpayment();
+                                dialog.dismiss();
+                            })
+                            .show();
+
+                    //Toast.makeText(expertBookingManagementActivity, response.body().getMessage(), Toast.LENGTH_LONG).show();
                     expertBookingManagementActivity.fetchBookings(2);
                     //mBookings.remove(position);
                   //notifyItemRemoved(position);

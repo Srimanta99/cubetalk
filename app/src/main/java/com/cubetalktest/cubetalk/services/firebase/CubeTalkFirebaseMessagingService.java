@@ -147,6 +147,7 @@ public class CubeTalkFirebaseMessagingService extends FirebaseMessagingService {
         Uri alarmSound = RingtoneManager. getDefaultUri (RingtoneManager. TYPE_NOTIFICATION );
          mp = MediaPlayer. create (getApplicationContext(),R.raw.mesibo_customcall_tone);
           mp.start();
+       //   mp.isLooping();
 
 //        Intent intent = new Intent(this, SplashActivity.class);
 //        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -199,6 +200,6 @@ public class CubeTalkFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onDestroy() {
         super.onDestroy();
-       // mp.stop();
+       //  mp.stop();
     }
 }

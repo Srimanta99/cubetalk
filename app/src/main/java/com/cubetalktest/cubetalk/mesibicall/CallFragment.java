@@ -16,6 +16,13 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.cubetalktest.cubetalk.models.User;
+import com.cubetalktest.cubetalk.models.login_user.LoginRequest;
+import com.cubetalktest.cubetalk.models.login_user.LoginResponse;
+import com.cubetalktest.cubetalk.models.updateremaining_time.CallRemainingTimeResponse;
+import com.cubetalktest.cubetalk.models.updateremaining_time.CallTimeReaminingRequest;
+import com.cubetalktest.cubetalk.services.api.LoginService;
+import com.cubetalktest.cubetalk.services.api.ReamningTimeService;
+import com.cubetalktest.cubetalk.services.api.ServiceBuilder;
 import com.cubetalktest.cubetalk.utils.Utils;
 import com.mesibo.api.Mesibo;
 import com.mesibo.calls.api.MesiboCall;
@@ -27,6 +34,10 @@ import com.cubetalktest.cubetalk.R;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.mesibo.calls.api.MesiboCall.MESIBOCALL_SOUND_RINGING;
 import static com.mesibo.calls.api.MesiboCall.MESIBOCALL_UI_STATE_SHOWCONTROLS;
@@ -233,21 +244,24 @@ public class CallFragment extends Fragment implements MesiboCall.InProgressListe
         if(!mCall.isIncoming()) {
             Long calltine = Long.valueOf(User.CALLTIME);
             String fullDateSlot=User.FullDateSlot;
-            long reamning_mills=0;
+           final  long reamning_mills;
             try{
                 SimpleDateFormat datetimeforslot=new SimpleDateFormat("dd/MM/yyyy hh:mm a");
-                Date date_slot = datetimeforslot.parse("10/03/2021 6:30 PM");
+               // Date date_slot = datetimeforslot.parse("12/03/2021 12:48 PM");
+                Date end_date_slot=datetimeforslot.parse(User.EndDateSlot);
                 // Date currentdate = new Date();
                 String currentDate_ = new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.getDefault()).format(new Date());
                 Date currentdatetime=datetimeforslot.parse(currentDate_);
              //   reamning_mills = ((date_slot.getTime())+(calltine*60000)) - currentdatetime.getTime();
 
-                reamning_mills=( currentdatetime.getTime()-date_slot.getTime());
-                long seconds = (reamning_mills / 1000)  ;
-                long remailngcalltimediff=(calltine*60-seconds)*1000;
-                new CountDownTimer(remailngcalltimediff, 1000) {
+                reamning_mills=( end_date_slot.getTime()-currentdatetime.getTime());
+                //long seconds = (reamning_mills / 1000)  ;
+               // long remailngcalltimediff=(calltine*60-seconds)*1000;
+               // long remailngcalltimediff=60000;
+
+                new CountDownTimer(reamning_mills, 1000) {
                     public void onTick(long millisUntilFinished) {
-                        int sec= (int) (remailngcalltimediff-counter);
+                        int sec= (int) (reamning_mills-counter);
                         int min=(sec / 1000) / 60;
                         int remainsec=(sec / 1000) % 60;
                         ui.status.setText("Time remaining " + String.valueOf(min)+" Min. "+ String.valueOf(remainsec)+" Sec. ");
@@ -295,7 +309,7 @@ public class CallFragment extends Fragment implements MesiboCall.InProgressListe
 
     @Override
     public void MesiboCall_OnVideo(MesiboCall.CallProperties p, MesiboCall.VideoProperties video, boolean remote) {
-
+        Log.d("call disconnect reason","adh1");
     }
 
     /* recommended view settings - you can override it */
@@ -345,7 +359,7 @@ public class CallFragment extends Fragment implements MesiboCall.InProgressListe
 
     @Override
     public void MesiboCall_OnStatus(MesiboCall.CallProperties p, int status, boolean video) {
-
+        Log.d("call disconnect reason","adh2");
         setStatusView(status);
 
         if((status& Mesibo.CALLSTATUS_COMPLETE) > 0) {
@@ -376,7 +390,7 @@ public class CallFragment extends Fragment implements MesiboCall.InProgressListe
 
     @Override
     public void Mesibo_onConnectionStatus(int i) {
-
+        Log.d("call disconnect reason","adh3");
     }
 
 
@@ -442,7 +456,33 @@ public class CallFragment extends Fragment implements MesiboCall.InProgressListe
 
     @Override
     public void MesiboCall_OnHangup(MesiboCall.CallProperties p, int reason) {
+        Log.d("call disconnect reason","adh");
+        if(counter>0)
+        callApiforCallDisconnect();
 
+    }
+
+    private void callApiforCallDisconnect() {
+     //   int min=(counter / 1000) / 60;
+       // int remainsec=(counter / 1000) % 60;
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        String end_Time_str = sdf.format(new Date());
+        CallTimeReaminingRequest callTimeReaminingRequest = new CallTimeReaminingRequest();
+        callTimeReaminingRequest.setBookedTime(User.BOOKEDID);
+        callTimeReaminingRequest.setConferenceFinishTime(end_Time_str);
+        ReamningTimeService reamningTimeService = ServiceBuilder.buildService(ReamningTimeService.class);
+        Call<CallRemainingTimeResponse> createRequest = reamningTimeService.login(callTimeReaminingRequest);
+        createRequest.enqueue(new Callback<CallRemainingTimeResponse>() {
+            @Override
+            public void onResponse(Call<CallRemainingTimeResponse> call, Response<CallRemainingTimeResponse> response) {
+                Log.d("time","Update");
+            }
+
+            @Override
+            public void onFailure(Call<CallRemainingTimeResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
