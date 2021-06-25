@@ -39,8 +39,6 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     public static final String TAG = LoginActivity.class.getSimpleName();
-
-
     private TextInputLayout mEmailLayout;
     private EditText mEmailEdit;
 

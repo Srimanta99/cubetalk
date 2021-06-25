@@ -210,9 +210,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
                              .setPositiveButton("Ok", (dialog, which) -> {
                                 //startpayment();
                                 Intent intent = new Intent(PaymentActivity.this, HomeActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
-                                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                                 finish();
                             })

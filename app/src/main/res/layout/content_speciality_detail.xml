@@ -14,10 +14,11 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/speclistDetailsImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_110sdp"
             android:adjustViewBounds="true"
-            android:src="@drawable/speciality_banner" />
+           />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_speciality_detail_promotion_banners"

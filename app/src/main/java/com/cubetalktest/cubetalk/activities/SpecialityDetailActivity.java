@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -20,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cubetalktest.cubetalk.databinding.ActivitySpecialityDetailBinding;
+import com.cubetalktest.cubetalk.databinding.ContentSpecialityDetailBinding;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.radiobutton.MaterialRadioButton;
@@ -35,8 +38,7 @@ import com.cubetalktest.cubetalk.R;
 import com.cubetalktest.cubetalk.adapters.recycler.PromotionBannersAdapter;
 import com.cubetalktest.cubetalk.adapters.recycler.RelatedArticlesAdapter;
 import com.cubetalktest.cubetalk.adapters.recycler.RelatedVideosAdapter;
-import com.cubetalktest.cubetalk.databinding.ActivitySpecialityDetailBinding;
-import com.cubetalktest.cubetalk.databinding.ContentSpecialityDetailBinding;
+
 import com.cubetalktest.cubetalk.models.PromotionBannerResponse;
 import com.cubetalktest.cubetalk.models.SpecialityArticleResponse;
 import com.cubetalktest.cubetalk.models.SpecialityResponse;
@@ -68,6 +70,7 @@ public class SpecialityDetailActivity
     private PromotionBannersAdapter mPromotionBannersAdapter;
     private RelatedArticlesAdapter mRelatedArticlesAdapter;
     private RelatedVideosAdapter mRelatedVideosAdapter;
+    private ImageView speclistDetailsImage;
     private String mSpecialityId;
     //    private ArrayList<SpecialityTopicResponse.Data> mSpecialityTopics;
 //    private SpecialityTopicsAdapter mSpecialityTopicsAdapter;
@@ -102,6 +105,8 @@ public class SpecialityDetailActivity
         }
         mSpeciality = mIntent.getParcelableExtra(HomeFragment.SPECIALITY);
         mSpecialityId = mSpeciality.getId();
+
+
 //        Toast.makeText(this, mSpecialityId, Toast.LENGTH_LONG).show();
 
         ActionBar actionBar = getSupportActionBar();
@@ -119,6 +124,20 @@ public class SpecialityDetailActivity
         mRelatedArticlesRecycler = mContentBinding.rvSpecialityDetailRelatedArticles;
         mRelatedVideosLinearLayout = mContentBinding.llRelatedVideos;
         mRelatedVideosRecycler = mContentBinding.rvSpecialityDetailRelatedVideos;
+        speclistDetailsImage=mContentBinding.speclistDetailsImage;
+        if(mSpeciality.getName().contains("Natural Health Management")){
+            mContentBinding.speclistDetailsImage.setBackgroundResource(R.drawable.naturehelth);
+        }else if(mSpeciality.getName().contains("Counselling & Motivation")){
+            mContentBinding.speclistDetailsImage.setBackgroundResource(R.drawable.counselling);
+        }else if(mSpeciality.getName().contains("Innovation & Start-Up")){
+            mContentBinding.speclistDetailsImage.setBackgroundResource(R.drawable.innovation);
+        }
+        else if(mSpeciality.getName().contains("Music, Art & Dance")){
+            mContentBinding.speclistDetailsImage.setBackgroundResource(R.drawable.artmusic);
+        }else {
+            mContentBinding.speclistDetailsImage.setBackgroundResource(R.drawable.speciality_banner);
+        }
+
 
         mPromotionBanners = new ArrayList<>();
         mPromotionBannersAdapter = new PromotionBannersAdapter(mPromotionBanners);
@@ -149,7 +168,6 @@ public class SpecialityDetailActivity
             Intent intent = new Intent(SpecialityDetailActivity.this, CustomYouTubeVideoPlayerActivity.class);
             intent.putExtra("YouTubeVideoId", getYoutubeVideoId(video.getUrl()));
             startActivity(intent);
-
 
         });
 

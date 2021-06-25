@@ -326,7 +326,7 @@ public class UserEditProfileActivity extends AppCompatActivity implements View.O
                 }
                 if (photoFile != null) {
                     Uri photoURI = FileProvider.getUriForFile(this,
-                            "local.impactlife.cubetalk.fileprovider",
+                            "com.cubetalktest.cubetalk.fileprovider",
                             photoFile);
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                     startActivityForResult(takePictureIntent, RC_CAPTURE_IMAGE);

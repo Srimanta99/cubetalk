@@ -67,15 +67,20 @@ public class PastBookingsAdapter extends RecyclerView.Adapter<PastBookingsAdapte
         Expert expert = pastBooking.getExpert();
         Topic topic = pastBooking.getTopic();
 
-        Glide.with(holder.itemView.getContext())
-                .load(expert.getProfileImage())
-                .into(holder.mExpertImage);
+        if(expert!=null) {
+            Glide.with(holder.itemView.getContext())
+                    .load(expert.getProfileImage())
+                    .into(holder.mExpertImage);
+        }
 
-        holder.mExpertNameText.setText(expert.getName());
+         if ((expert!=null))
+            holder.mExpertNameText.setText(expert.getName());
+         //else
+            // holder.mExpertNameText.setText("NA");
 
         holder.mConsultationTopicText.setText(topic.getName());
 
-        holder.mConsultationSlotTypeAndPrice.setText(Utils.convertSlotType(pastBooking.getSlotType()) + " - 500 INR");
+        holder.mConsultationSlotTypeAndPrice.setText(Utils.convertSlotType(pastBooking.getSlotType()) + " - INR "+pastBooking.getAmount_paid());
 
         holder.mBookedDateAndTimeText.setText(Utils.convertSlotDate(pastBooking.getCreatedAt()) + " " + Utils.convertSlotTime(pastBooking.getCreatedAt()));
 
