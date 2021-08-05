@@ -18,11 +18,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.cubetalktest.cubetalk.databinding.ActivityIntroScreenBinding;
+import com.cubetalktest.cubetalk.databinding.ContentIntroScreenBinding;
 import com.google.android.material.button.MaterialButton;
 
 import com.cubetalktest.cubetalk.R;
-import com.cubetalktest.cubetalk.databinding.ActivityIntroScreenBinding;
-import com.cubetalktest.cubetalk.databinding.ContentIntroScreenBinding;
+
 
 import static com.cubetalktest.cubetalk.utils.Utils.isConnectedToInternet;
 
@@ -82,8 +83,8 @@ public class IntroScreenActivity
 
         layouts = new int[]{
                 R.layout.layout_slide_one,
-                R.layout.layout_slide_one,
-                R.layout.layout_slide_one};
+                R.layout.layout_slide_two,
+                R.layout.layout_slide_three};
 
         mAdapter = new IntroScreenViewsSliderAdapter();
 
@@ -219,7 +220,7 @@ public class IntroScreenActivity
             mViewpagerDotsLayout.addView(dots[i]);
         }
 
-        if (dots.length > 0)
+         if (dots.length > 0)
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
 

@@ -21,8 +21,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.cubetalktest.cubetalk.databinding.ActivitySpecialityDetailBinding;
 import com.cubetalktest.cubetalk.databinding.ContentSpecialityDetailBinding;
+import com.cubetalktest.cubetalk.models.spacility.SpecialityImageReaponse;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.radiobutton.MaterialRadioButton;
@@ -125,7 +127,8 @@ public class SpecialityDetailActivity
         mRelatedVideosLinearLayout = mContentBinding.llRelatedVideos;
         mRelatedVideosRecycler = mContentBinding.rvSpecialityDetailRelatedVideos;
         speclistDetailsImage=mContentBinding.speclistDetailsImage;
-        if(mSpeciality.getName().contains("Natural Health Management")){
+
+        /*if(mSpeciality.getName().contains("Natural Health Management")){
             mContentBinding.speclistDetailsImage.setBackgroundResource(R.drawable.naturehelth);
         }else if(mSpeciality.getName().contains("Counselling & Motivation")){
             mContentBinding.speclistDetailsImage.setBackgroundResource(R.drawable.counselling);
@@ -137,7 +140,7 @@ public class SpecialityDetailActivity
         }else {
             mContentBinding.speclistDetailsImage.setBackgroundResource(R.drawable.speciality_banner);
         }
-
+*/
 
         mPromotionBanners = new ArrayList<>();
         mPromotionBannersAdapter = new PromotionBannersAdapter(mPromotionBanners);
@@ -238,20 +241,47 @@ public class SpecialityDetailActivity
             i.putExtra(SELECTED_TOPIC_NAME, mSelectedTopicName);
             startActivity(i);
         });
+
+        callApiforSpacilityImage(mSpecialityId);
+
+    }
+
+    private void callApiforSpacilityImage(String mSpecialityId) {
+        Call<SpecialityImageReaponse> specialityArticleResponse = mSpecialityService.getSpacilityDetails(mSharedPreferences.getString(User.TOKEN, ""),mSpecialityId);
+        specialityArticleResponse.enqueue(new Callback<SpecialityImageReaponse>() {
+            @Override
+            public void onResponse(@NotNull Call<SpecialityImageReaponse> call, @NotNull Response<SpecialityImageReaponse> response) {
+                SpecialityImageReaponse responseBody = response.body();
+                if (responseBody.ismSuccess()) {
+                    if (!responseBody.getmArticles().get(0).getImage().equals("")) {
+                        Glide.with(SpecialityDetailActivity.this)
+                                .load(responseBody.getmArticles().get(0).getImage())
+                                .into(mContentBinding.speclistDetailsImage);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<SpecialityImageReaponse> call, @NotNull Throwable throwable) {
+
+            }
+        });
     }
 
     private void fetchSpecialityArticles() {
-        Call<SpecialityArticleResponse> specialityArticleResponse = mSpecialityService.getArticles(mSharedPreferences.getString(User.TOKEN, ""),"all");
+        Call<SpecialityArticleResponse> specialityArticleResponse = mSpecialityService.getArticles(mSharedPreferences.getString(User.TOKEN, ""),mSpecialityId);
         specialityArticleResponse.enqueue(new Callback<SpecialityArticleResponse>() {
             @Override
             public void onResponse(@NotNull Call<SpecialityArticleResponse> call, @NotNull Response<SpecialityArticleResponse> response) {
                 SpecialityArticleResponse responseBody = response.body();
                 if (responseBody.getSuccess()) {
-                    mRelatedArticles.clear();
-                    mRelatedArticles.addAll(responseBody.getArticles());
-                    mRelatedArticlesAdapter.notifyDataSetChanged();
+                    if (responseBody.getArticles().size()>0) {
+                        mRelatedArticles.clear();
+                        mRelatedArticles.addAll(responseBody.getArticles());
+                        mRelatedArticlesAdapter.notifyDataSetChanged();
 
-                    mRelatedArticlesLinearLayout.setVisibility(View.VISIBLE);
+                        mRelatedArticlesLinearLayout.setVisibility(View.VISIBLE);
+                    }
                 }
             }
 
@@ -263,17 +293,18 @@ public class SpecialityDetailActivity
     }
 
     private void fetchSpecialityVideos() {
-        Call<SpecialityVideoResponse> specialityVideoResponse = mSpecialityService.getVideos(mSharedPreferences.getString(User.TOKEN, ""),"all");
+        Call<SpecialityVideoResponse> specialityVideoResponse = mSpecialityService.getVideos(mSharedPreferences.getString(User.TOKEN, ""),mSpecialityId);
         specialityVideoResponse.enqueue(new Callback<SpecialityVideoResponse>() {
             @Override
             public void onResponse(@NotNull Call<SpecialityVideoResponse> call, @NotNull Response<SpecialityVideoResponse> response) {
                 SpecialityVideoResponse responseBody = response.body();
                 if (responseBody.getSuccess()) {
-                    mRelatedVideos.clear();
-                    mRelatedVideos.addAll(responseBody.getVideos());
-                    mRelatedVideosAdapter.notifyDataSetChanged();
-
-                    mRelatedVideosLinearLayout.setVisibility(View.VISIBLE);
+                    if (responseBody.getVideos().size()>0) {
+                        mRelatedVideos.clear();
+                        mRelatedVideos.addAll(responseBody.getVideos());
+                        mRelatedVideosAdapter.notifyDataSetChanged();
+                        mRelatedVideosLinearLayout.setVisibility(View.VISIBLE);
+                    }
                 }
             }
 

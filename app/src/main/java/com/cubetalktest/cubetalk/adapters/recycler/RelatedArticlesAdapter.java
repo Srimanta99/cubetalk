@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,16 +13,17 @@ import java.util.ArrayList;
 
 import com.cubetalktest.cubetalk.R;
 import com.cubetalktest.cubetalk.models.SpecialityArticleResponse;
+import com.google.android.material.textview.MaterialTextView;
 
-public class RelatedArticlesAdapter
-        extends RecyclerView.Adapter<RelatedArticlesAdapter.ViewHolder> {
+public class RelatedArticlesAdapter extends RecyclerView.Adapter<RelatedArticlesAdapter.ViewHolder> {
 
-    public static class ViewHolder
-            extends RecyclerView.ViewHolder {
-
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView tv_artical_text;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            tv_artical_text=itemView.findViewById(R.id.tv_artical_text);
         }
+
     }
 
     private final ArrayList<SpecialityArticleResponse.Article> mRelatedArticles;
@@ -44,6 +46,7 @@ public class RelatedArticlesAdapter
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.tv_artical_text.setText(mRelatedArticles.get(position).getDescription());
 
     }
 

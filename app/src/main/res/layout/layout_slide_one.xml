@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:background="@drawable/slide_1"
     tools:context=".activities.IntroScreenActivity">
 
-    <ImageView
+   <!-- <ImageView
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginTop="16dp"
@@ -50,5 +51,5 @@
         android:layout_marginTop="32dp"
         android:text="&#169; ImpactLife Solutions LLP "
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold" />-->
 </LinearLayout>
