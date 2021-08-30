@@ -9,7 +9,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceBuilder {
-    private static final String URL = "http://45.79.24.49:7200/";
+    //private static final String URL = "http://45.79.24.49:7200/";
+    private static final String URL ="http://65.1.253.166/";
 
     // Create logger
     private static HttpLoggingInterceptor logger =

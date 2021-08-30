@@ -1,7 +1,14 @@
 package com.cubetalktest.cubetalk.activities;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,6 +19,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -33,6 +41,10 @@ import com.mesibo.calls.api.MesiboCall;
 
 
 import org.jetbrains.annotations.NotNull;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import com.cubetalktest.cubetalk.R;
 import com.cubetalktest.cubetalk.enums.ExpertApplicationStatus;
@@ -43,6 +55,9 @@ import com.cubetalktest.cubetalk.models.get_expert_status.ExpertStatusResponseBo
 import com.cubetalktest.cubetalk.services.api.ExpertService;
 import com.cubetalktest.cubetalk.services.api.ServiceBuilder;
 import com.cubetalktest.cubetalk.services.api.UserService;
+
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -65,6 +80,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private ImageView mUserProfileImageView;
     private String mUserId;
     private MenuItem mSignUpAsExpertMenuItem;
+    private String currentVersion;
+    private Dialog dialog ;
 
 
     @Override
@@ -99,6 +116,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getCurrentVersion();//for app version check
       //get fcm token
        /* FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -188,6 +206,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if (actionBar != null) {
             actionBar.setTitle(getString(R.string.app_name));
         }
+
     }
 
     @Override
@@ -566,5 +585,89 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return null;
     }
     */
+   private void getCurrentVersion(){
+       PackageManager packageManager = this.getPackageManager();
+       PackageInfo packageInfo = null;
+       try {
+           packageInfo =  packageManager.getPackageInfo(getPackageName(),0);
+       } catch (PackageManager.NameNotFoundException e) {
+           e.printStackTrace();
+       }
+        currentVersion = packageInfo.versionName;
+      new  GetVersionCode().execute();
+   }
 
+    private class GetVersionCode extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            String newVersion="";
+            try {
+                  Document document= Jsoup.connect("https://play.google.com/store/apps/details?id=" +  getApplicationContext().getPackageName() + "&hl=en")
+                                .timeout(30000)
+                                .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
+                                .referrer("http://www.google.com")
+                                 .get();
+                if (document != null) {
+                    Elements element = document.getElementsContainingOwnText("Current Version");
+                    for (Element ele : element) {
+                        if (ele.siblingElements() != null) {
+                            Elements sibElemets = ele.siblingElements();
+                            for (Element sibElemet : sibElemets) {
+                                newVersion = sibElemet.text();
+                            }
+                        }
+                    }
+                }
+
+            } catch (IOException e) {
+                return "";
+            }
+            return  newVersion;
+        }
+
+        @Override
+        protected void onPostExecute(String onlineVersion) {
+            super.onPostExecute(onlineVersion);
+            if (onlineVersion != null && !onlineVersion.isEmpty()) {
+                if (java.lang.Float.valueOf(currentVersion) < java.lang.Float.valueOf(onlineVersion)) {
+                    showUpdateDialog();
+                }else
+                    Toast.makeText(getApplicationContext(),"bdjbs", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }
+
+    private void showUpdateDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getString(R.string.app_name));
+        builder.setMessage(getResources().getString(R.string.new_version_avalible));
+
+        builder.setPositiveButton(getResources().getString(R.string.update), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+               String appPackageName = getApplicationContext().getPackageName();
+                try{
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id="+appPackageName)));
+
+
+                }catch(android.content.ActivityNotFoundException e){
+                    startActivity(
+                          new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id="+appPackageName))
+                    );
+                    e.printStackTrace();
+                }
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alert = builder.create();
+        builder.setCancelable(false);
+        alert.show();
+    }
 }

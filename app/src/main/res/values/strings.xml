@@ -95,4 +95,8 @@
     <string name="send">SEND</string>
     <string name="nobookingfound">No Booking Found</string>
 
+    <string name="new_version_avalible">A New Update is Available</string>
+    <string name="update">Update</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

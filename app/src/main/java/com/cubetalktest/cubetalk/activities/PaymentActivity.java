@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cubetalktest.cubetalk.databinding.ActivityPaymentBinding;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -27,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
 import com.cubetalktest.cubetalk.R;
-import com.cubetalktest.cubetalk.databinding.ActivityPaymentBinding;
+
 import com.cubetalktest.cubetalk.models.User;
 import com.cubetalktest.cubetalk.models.creditshell.CreditShellResponse;
 import com.cubetalktest.cubetalk.models.post_booking_slot.BookSlotRequest;
